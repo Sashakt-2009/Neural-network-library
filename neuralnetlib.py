@@ -147,7 +147,7 @@ def loss(y_true, y_pred):                   # loss function --> calculates the M
 if __name__ == "__main__":                  # the main file construct that allows to check if the err. is due to the lib or due to other reasons 
     import pandas as pd 
     input = pd.read_csv("screentime.csv", header=None).squeeze()        
-    output = pd.read_csv("marks.csv", header=None).squeeze()            
+    output = pd.read_csv("marks.csv", header=None).squeeze()           
 
     input = input_vec(input)
     output = output_vec(output)
@@ -160,17 +160,9 @@ if __name__ == "__main__":                  # the main file construct that allow
         err = BackProp(output, 2, layer_vec, weights, 1)
         weights, biases = UpdateGrad(2, 0.001, weights, biases, err)
         losses = loss(output, layer_vec["Y"])
-        # if i % 100:
-        #     print(losses)
-        #     print((layer_vec["Y"]))
-        
+       
+    layer_vec = ForwardProp(input[0, 10], weights, biases, "ReLU", "sigmoid", 2)
+    print (np.array(9.91))
+    print (0.52)
+    print(layer_vec["Y"])
     
-    
-    print(f"tained model of loss {losses}")
-
-
-    
-
-
-
-
